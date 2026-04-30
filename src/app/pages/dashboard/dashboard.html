@@ -1,0 +1,72 @@
+<div class="dashboard-wrapper">
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="gold-text">MOMENTS</span> STUDIO
+    </div>
+    <nav>
+      <ul>
+        <li class="active">Dashboard</li>
+        <li>Bookings</li>
+        <li>Gallery Mgmt</li>
+        <li>Settings</li>
+      </ul>
+    </nav>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </aside>
+
+  <main class="content">
+    <header class="dash-header">
+      <h2>Welcome, Admin</h2>
+      <div class="user-info">
+        <span>Admin User</span>
+      </div>
+    </header>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total Bookings</h3>
+        <p class="stat-value">124</p>
+      </div>
+      <div class="stat-card">
+        <h3>Pending Inquiries</h3>
+        <p class="stat-value">12</p>
+      </div>
+      <div class="stat-card">
+        <h3>Gallery Images</h3>
+        <p class="stat-value">456</p>
+      </div>
+      <div class="stat-card">
+        <h3>Videos</h3>
+        <p class="stat-value">42</p>
+      </div>
+    </div>
+
+    <section class="recent-bookings">
+      <h3>Recent Bookings</h3>
+      <table class="bookings-table">
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Service</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rahul Sharma</td>
+            <td>Wedding Photography</td>
+            <td>2026-05-15</td>
+            <td><span class="status confirmed">Confirmed</span></td>
+          </tr>
+          <tr>
+            <td>Anjali Verma</td>
+            <td>Pre-Wedding</td>
+            <td>2026-05-20</td>
+            <td><span class="status pending">Pending</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>

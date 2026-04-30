@@ -1,0 +1,125 @@
+<!-- Page Hero Banner -->
+<section class="about-hero">
+  <div class="about-hero-overlay"></div>
+  <div class="container about-hero-content">
+    <h4 class="about-eyebrow">OUR STORY</h4>
+    <h1 class="about-hero-title">About Moments Studio</h1>
+    <p class="about-hero-sub">Turning your most precious moments into timeless memories.</p>
+  </div>
+</section>
+
+<!-- About Us Section -->
+<section class="section-padding about-intro">
+  <div class="container about-grid">
+    <div class="about-intro-text">
+      <h4 class="about-label">ABOUT US</h4>
+      <h2>At Moments Studio, we believe that life's most meaningful memories deserve to be captured beautifully.</h2>
+      <p>From the intimate smiles of a newborn to the laughter of a family gathering, from heartfelt engagements to grand celebrations, our mission is to turn fleeting moments into timeless treasures.</p>
+      <p>Founded on a passion for storytelling through photography and videography, Moments Studio combines creativity, technical expertise, and a personal touch. We don't just take pictures – we capture the essence of your story, ensuring that every frame reflects emotion, connection, and authenticity.</p>
+      <a routerLink="/contact" class="btn-about-cta">Book a Session</a>
+    </div>
+    <div class="about-intro-image">
+      <img src="/assets/images/about_us_page_1777525057236.png" alt="Moments Studio Photography" class="about-main-img">
+      <div class="about-badge">
+        <span class="badge-num">15+</span>
+        <span class="badge-text">Years of<br>Excellence</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="about-stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let s of stats">
+        <span class="stat-value">{{s.value}}</span>
+        <span class="stat-label">{{s.label}}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Short Story Section -->
+<section class="section-padding about-story">
+  <div class="container about-story-grid">
+    <div class="story-image-wrap">
+      <img src="/assets/images/wedding_couple_portrait_1777525329405.png" alt="Our Story" class="story-img">
+      <img src="/assets/images/wedding_hero_1777525311142.png" alt="Wedding Photography" class="story-img-2">
+    </div>
+    <div class="story-text">
+      <h4 class="about-label">A SHORT STORY ABOUT US</h4>
+      <h2>We Don't Just Take Pictures — We Capture Your Story</h2>
+      <p>Founded on a passion for storytelling through photography and videography, Moments Studio combines creativity, technical expertise, and a personal touch. Every frame we create reflects emotion, connection, and authenticity.</p>
+      <p>Our team of skilled photographers and videographers uses the latest technology and creative techniques to ensure that your memories are preserved in the most beautiful way possible.</p>
+      <div class="story-highlights">
+        <div class="highlight-item">
+          <i class="fas fa-camera"></i>
+          <span>Candid & Cinematic Coverage</span>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-heart"></i>
+          <span>Emotion-Driven Photography</span>
+        </div>
+        <div class="highlight-item">
+          <i class="fas fa-star"></i>
+          <span>Premium Post-Processing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Founder Message Section -->
+<section class="section-padding founder-section">
+  <div class="container">
+    <div class="section-header text-center" style="margin-bottom: 60px;">
+      <h4 class="about-label">MEET THE FOUNDER</h4>
+      <h2>A Message from Our Founder</h2>
+    </div>
+    <div class="founder-card">
+      <div class="founder-image-wrap">
+        <img src="/assets/images/user1.png" alt="Ajit Singh - Founder" class="founder-img">
+        <div class="founder-quote-mark">"</div>
+      </div>
+      <div class="founder-message">
+        <p class="founder-text">Hello, and welcome to Moments Studio!</p>
+        <p class="founder-text">At Moments Studio, we believe every moment is worth remembering. I started this studio to capture life's genuine emotions and turn them into memories you'll cherish forever. Photography and videography aren't just what we do — they're how we tell your story.</p>
+        <p class="founder-text">From laughter to tears, big celebrations to quiet moments, our mission is to preserve the feelings behind every memory. Thank you for letting us be a part of your story. Let's create memories that last a lifetime.</p>
+        <div class="founder-signature">
+          <span class="founder-name">Ajit Singh</span>
+          <span class="founder-role">Founder, Moments Studio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="section-padding about-testimonials">
+  <div class="container">
+    <div class="section-header text-center" style="margin-bottom: 60px;">
+      <h4 class="about-label">LOVED IT</h4>
+      <h2>What Our Happy Couples Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="about-testimonial-card" *ngFor="let t of testimonials">
+        <div class="t-stars">{{t.stars}}</div>
+        <p class="t-text">"{{t.text}}"</p>
+        <div class="t-author">
+          <span class="t-name">{{t.name}}</span>
+          <span class="t-location">{{t.location}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="about-cta-banner">
+  <div class="container text-center">
+    <h2>Ready to Create Beautiful Memories?</h2>
+    <p>Let us capture your most precious moments. Get in touch today for a personalized quote.</p>
+    <a routerLink="/contact" class="btn-about-cta">Get a Quote</a>
+  </div>
+</section>

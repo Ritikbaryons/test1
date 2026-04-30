@@ -1,0 +1,472 @@
+/* ==========================================
+   ABOUT PAGE — Consistent with #FFF5F6 theme
+   ========================================== */
+
+/* Hero */
+.about-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 420px;
+  background: url('/assets/images/home1.png') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 20, 0.55);
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.about-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #D4AF37;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.about-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.about-hero-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 1px;
+}
+
+/* Shared label */
+.about-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #D4AF37;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* About Intro */
+.about-intro {
+  background: #FFF5F6;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-intro-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+
+.about-intro-text p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.btn-about-cta {
+  display: inline-block;
+  padding: 15px 45px;
+  border: 1.5px solid #1a1a1a;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+  background: transparent;
+}
+
+.btn-about-cta:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.about-intro-image {
+  position: relative;
+}
+
+.about-main-img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+  object-fit: cover;
+  height: 560px;
+}
+
+.about-badge {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  background: #D4AF37;
+  color: #1a1a1a;
+  padding: 24px 28px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+}
+
+.badge-num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.badge-text {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  margin-top: 6px;
+}
+
+/* Stats */
+.about-stats {
+  background: #1a1a1a;
+  padding: 70px 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: #D4AF37;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+/* Story Section */
+.about-story {
+  background: #FFF5F6;
+}
+
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.story-image-wrap {
+  position: relative;
+}
+
+.story-img {
+  width: 65%;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+  object-fit: cover;
+  height: 480px;
+}
+
+.story-img-2 {
+  position: absolute;
+  width: 50%;
+  height: 320px;
+  right: 0;
+  bottom: -40px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  border: 6px solid #FFF5F6;
+}
+
+.story-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+
+.story-text p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.story-highlights {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.highlight-item i {
+  color: #D4AF37;
+  font-size: 18px;
+  width: 22px;
+}
+
+/* Founder Section */
+.founder-section {
+  background: #fff;
+}
+
+.founder-card {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 60px;
+  align-items: center;
+  background: #FFF5F6;
+  border-radius: 28px;
+  padding: 60px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+}
+
+.founder-image-wrap {
+  position: relative;
+}
+
+.founder-img {
+  width: 100%;
+  border-radius: 20px;
+  height: 440px;
+  object-fit: cover;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.founder-quote-mark {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 100px;
+  color: #D4AF37;
+  line-height: 1;
+  opacity: 0.4;
+}
+
+.founder-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+.founder-signature {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.founder-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.founder-role {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: #D4AF37;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Testimonials */
+.about-testimonials {
+  background: #FFF5F6;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.about-testimonial-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.t-stars {
+  color: #D4AF37;
+  font-size: 20px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.t-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 24px;
+}
+
+.t-author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 20px;
+  border-top: 1px solid #f0e4e6;
+}
+
+.t-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.t-location {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: #D4AF37;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* CTA Banner */
+.about-cta-banner {
+  background: #1a1a1a;
+  padding: 100px 0;
+  color: #fff;
+}
+
+.about-cta-banner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.about-cta-banner p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.about-cta-banner .btn-about-cta {
+  border-color: #D4AF37;
+  color: #D4AF37;
+}
+
+.about-cta-banner .btn-about-cta:hover {
+  background: #D4AF37;
+  color: #1a1a1a;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .about-hero-title { font-size: 48px; }
+
+  .about-grid,
+  .about-story-grid,
+  .founder-card {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .about-intro-image { margin-top: 60px; }
+
+  .about-badge {
+    bottom: -10px;
+    left: 10px;
+  }
+
+  .story-img { width: 100%; }
+  .story-img-2 {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    border: none;
+    margin-top: 20px;
+  }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .founder-card { padding: 30px; }
+
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  .about-cta-banner h2 { font-size: 36px; }
+}

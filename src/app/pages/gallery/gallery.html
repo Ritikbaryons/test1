@@ -1,0 +1,17 @@
+<section class="gallery-header section-padding" style="padding-top: 150px;">
+  <div class="container text-center">
+    <h4 class="gold-text">{{pageSubtitle}}</h4>
+    <h2>{{pageTitle}}</h2>
+  </div>
+</section>
+
+<section class="gallery-grid section-padding">
+  <div class="container masonry">
+    <div class="gallery-item" *ngFor="let img of images">
+      <img [src]="img" alt="Gallery Image">
+      <div class="overlay">
+        <i class="fas fa-search-plus"></i>
+      </div>
+    </div>
+  </div>
+</section>

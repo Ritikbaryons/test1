@@ -1,0 +1,7 @@
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="25" cy="25" r="20" fill="none" stroke="#D4AF37" stroke-width="2"/>
+  <circle cx="25" cy="25" r="8" fill="#D4AF37"/>
+  <rect x="15" y="10" width="20" height="5" fill="#D4AF37" rx="1"/>
+  <text x="55" y="32" font-family="'Playfair Display', serif" font-size="20" font-weight="700" fill="#D4AF37">MOMENTS</text>
+  <text x="155" y="32" font-family="'Montserrat', sans-serif" font-size="16" font-weight="400" fill="#FFFFFF">STUDIO</text>
+</svg>

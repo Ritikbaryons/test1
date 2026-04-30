@@ -1,0 +1,18 @@
+<section class="services-hero section-padding" style="padding-top: 150px;">
+  <div class="container text-center">
+    <h4 class="gold-text">WHAT WE DO</h4>
+    <h2>Our Professional Services</h2>
+  </div>
+</section>
+
+<section class="services-list section-padding">
+  <div class="container">
+    <div class="services-grid">
+      <div class="service-item" *ngFor="let s of services">
+        <div class="service-icon"><i [class]="s.icon"></i></div>
+        <h3>{{s.title}}</h3>
+        <p>{{s.desc}}</p>
+      </div>
+    </div>
+  </div>
+</section>

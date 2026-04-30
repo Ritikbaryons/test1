@@ -1,0 +1,144 @@
+<section class="hero">
+  <div class="video-background">
+    <video autoplay muted loop playsinline [src]="heroData.videoUrl | safeUrl">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <h1 class="hero-title">{{heroData.title}}</h1>
+    <p class="hero-subtitle">{{heroData.subtitle}}</p>
+    <div class="hero-btns">
+      <a routerLink="/contact" class="btn-ghost">GET A QUOTE</a>
+    </div>
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-content">
+      <p class="quote-text">{{quoteData.text}}</p>
+      <p class="quote-author">— {{quoteData.author}}</p>
+    </div>
+  </div>
+</section>
+
+<section class="about-section section-padding">
+  <div class="container grid-2 align-center">
+    <div class="about-text">
+      <h2 class="about-title">The Best Wedding <br> Photographer In <br> Patna Bihar</h2>
+      <p class="about-description">Hey there! Welcome to Moments Studio – where your love story gets painted with
+        emotional brushstrokes! We're the best wedding photographers in Patna, Bihar, capturing the timeless charm of
+        weddings. Step into our world for dramatic bridal shoots, fun Jaimaaland Galsedi, and romantic wedding moments.
+        We'll turn your big day into a romantic novel with unique poses. Let's make ordinary moments extraordinary!</p>
+      <a routerLink="/about" class="btn-know-more">Know More</a>
+    </div>
+    <div class="about-image">
+      <img src="/images/home1.png" alt="Wedding Portrait" class="rounded-img">
+    </div>
+  </div>
+</section>
+
+<section class="services-section section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="white-text">Our Services</h2>
+      <p class="section-subtitle">Moments Studio provides professional wedding photography services in Patna, <br>
+        including candid, cinematic, and traditional coverage.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let s of services">
+        <div class="service-img">
+          <img [src]="s.img" [alt]="s.title">
+        </div>
+        <div class="service-content">
+          <h3>{{s.title}}</h3>
+          <p>{{s.desc}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking-cta">
+  <div class="container">
+    <div class="cta-wrapper">
+      <ng-container *ngFor="let item of bookingCtaData; let i = index">
+        <ng-container *ngIf="currentBookingIndex === i">
+          <div class="cta-content fade-in-up">
+            <h2 class="cta-heading">{{animatedTitle}}<span class="cta-cursor">|</span></h2>
+            <p class="cta-subtext">{{item.subtext}}</p>
+            <div class="cta-footer">
+              <a routerLink="/contact" class="btn-cta-outline">Get a Quote</a>
+              <div class="cta-social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="cta-gallery fade-in-right">
+            <div class="cta-img-large">
+              <img [src]="item.images.large" [alt]="item.title">
+            </div>
+            <div class="cta-img-small-group">
+              <div class="cta-img-small">
+                <img [src]="item.images.small1" alt="Gallery 1">
+              </div>
+              <div class="cta-img-small">
+                <img [src]="item.images.small2" alt="Gallery 2">
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-preview section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h4 class="accent-text">GALLERY</h4>
+      <h2>Recent Portfolio Work</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" *ngFor="let img of galleryPreview">
+        <img [src]="img" alt="Gallery Work">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews-section section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h4 class="accent-text">TESTIMONIALS</h4>
+      <h2>What Our Clients Say</h2>
+    </div>
+
+    <div class="testimonial-carousel">
+      <div class="testimonial-card">
+        <div class="testimonial-flex">
+          <div class="testimonial-img">
+            <img [src]="testimonials[currentIndex].img" [alt]="testimonials[currentIndex].author">
+          </div>
+          <div class="testimonial-content">
+            <div class="stars">{{testimonials[currentIndex].stars}}</div>
+            <p class="testimonial-text">{{testimonials[currentIndex].text}}</p>
+            <h4 class="testimonial-author">— {{testimonials[currentIndex].author}}</h4>
+          </div>
+          <div class="quote-icon">
+            <i class="fas fa-quote-right"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-dots">
+        <span *ngFor="let r of testimonials; let i = index" [class.active]="i === currentIndex"
+          (click)="setSlide(i)"></span>
+      </div>
+    </div>
+  </div>
+</section>

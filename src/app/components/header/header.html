@@ -1,0 +1,20 @@
+<header [class.scrolled]="isScrolled">
+  <div class="header-content">
+    <div class="logo" routerLink="/">
+      <img src="/images/logo.svg" alt="Moments Studio Logo" style="height: 40px;">
+    </div>
+    <nav>
+      <ul>
+        <li *ngFor="let link of navLinks">
+          <ng-container *ngIf="!link.external; else externalLink">
+            <a [routerLink]="link.path" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: !!link.exact}">{{link.label}}</a>
+          </ng-container>
+          <ng-template #externalLink>
+            <a [href]="link.path">{{link.label}}</a>
+          </ng-template>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
