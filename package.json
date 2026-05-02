@@ -6,7 +6,7 @@
     "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "build:prod": "ng build --base-href /test1/",
-    "deploy": "npm run build:prod && copy dist\\moments-studio\\browser\\index.html dist\\moments-studio\\browser\\404.html && npx angular-cli-ghpages --dir=dist/moments-studio/browser",
+    "deploy": "npm run build:prod && node -e \"require('fs').copyFileSync('dist/moments-studio/browser/index.html', 'dist/moments-studio/browser/404.html')\" && npx angular-cli-ghpages --dir=dist/moments-studio/browser --no-dotfiles",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
