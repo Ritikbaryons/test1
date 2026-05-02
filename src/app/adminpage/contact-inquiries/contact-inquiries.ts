@@ -15,6 +15,24 @@ export class ContactInquiriesComponent implements OnInit {
   isModalOpen = false;
   isLoading = true;
 
+  currentPage = 1;
+  pageSize = 10;
+
+  get paginatedInquiries() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.inquiries.slice(start, start + this.pageSize);
+  }
+
+  get totalPages() {
+    return Math.ceil(this.inquiries.length / this.pageSize);
+  }
+
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
+
   constructor(
     private apiService: ApiService,
     private cdr: ChangeDetectorRef

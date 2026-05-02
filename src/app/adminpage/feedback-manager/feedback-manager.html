@@ -60,7 +60,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of feedbacks">
+          <tr *ngFor="let item of paginatedFeedbacks">
             <td class="date-cell">{{item.createdAt | date:'MMM d, y'}}</td>
             <td>
               <div class="client-info">
@@ -96,6 +96,11 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="pagination-controls" *ngIf="feedbacks.length > pageSize">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1" class="page-btn">Previous</button>
+      <span>Page {{currentPage}} of {{totalPages}}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages" class="page-btn">Next</button>
     </div>
   </div>
 </div>

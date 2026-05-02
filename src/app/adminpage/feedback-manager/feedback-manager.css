@@ -115,6 +115,13 @@
   border: 1px solid #f0f0f0;
 }
 
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+}
+
 .table-header {
   padding: 25px 30px;
   display: flex;
@@ -139,6 +146,7 @@
 }
 
 .admin-table {
+  min-width: 800px;
   width: 100%;
   border-collapse: collapse;
 }

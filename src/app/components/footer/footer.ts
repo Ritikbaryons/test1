@@ -13,10 +13,9 @@ export class FooterComponent {
   companyInfo = {
     description: 'Capturing your beautiful moments forever. We are a premium photography and cinematography studio based in Patna, dedicated to making your celebrations eternal.',
     socials: [
-      { icon: 'fab fa-facebook', link: '#' },
-      { icon: 'fab fa-instagram', link: '#' },
-      { icon: 'fab fa-youtube', link: '#' },
-      { icon: 'fab fa-twitter', link: '#' }
+      { icon: 'fab fa-facebook-f', link: 'https://www.facebook.com/moments1studio' },
+      { icon: 'fab fa-instagram', link: 'https://www.instagram.com/moments1studio' },
+      { icon: 'fab fa-youtube', link: 'https://www.youtube.com/c/MomentsStudio' }
     ]
   };
 

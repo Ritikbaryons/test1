@@ -26,6 +26,63 @@
   left: 0;
 }
 
+/* ── Hero: desktop shows video, mobile shows YouTube Short ── */
+.desktop-hero-bg {
+  display: block; /* visible on desktop */
+}
+
+.mobile-hero-bg {
+  display: none; /* hidden on desktop */
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+
+
+.mobile-hero-bg iframe {
+  border: none;
+  position: absolute;
+  pointer-events: none;
+}
+
+
+@media (max-width: 1024px) {
+  .desktop-hero-bg {
+    display: none; /* hide video on mobile & tablet */
+  }
+
+  .mobile-hero-bg {
+    display: block; /* show YouTube Short on mobile & tablet */
+  }
+
+  /* Make hero full-viewport height for immersive short */
+  .hero {
+    height: 100svh;
+  }
+
+  /* iframe cover: YouTube Shorts are 9:16 — whichever dimension is larger wins.
+     This ensures no black side/top bars from YouTube's internal pillarboxing. */
+  .mobile-hero-bg iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Cover technique: always fill the larger of width vs height */
+    width: max(100vw, calc(100svh * 9 / 16));
+    height: max(100svh, calc(100vw * 16 / 9));
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .mobile-hero-bg {
+    background: #0d0d0d; /* solid dark fallback */
+  }
+}
+
+@keyframes iframeFadeIn {
+  to { opacity: 1; }
+}
+
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -729,3 +786,105 @@
     font-size: 12px;
   }
 }
+
+/* FAQ Section Styling */
+.faq-section {
+  background-color: var(--bg-soft-pink);
+  padding: 100px 0;
+}
+
+.faq-accordion {
+  max-width: 900px;
+  margin: 50px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px 35px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+.faq-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.faq-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.faq-item.active .faq-header h3 {
+  color: var(--primary-gold);
+}
+
+.faq-icon {
+  font-size: 16px;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+  color: var(--primary-gold);
+  transform: rotate(180deg);
+}
+
+.faq-body {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #f0f0f0;
+  animation: faqSlideIn 0.3s ease-out forwards;
+}
+
+.faq-body p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+}
+
+@keyframes faqSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-accordion {
+    padding: 0 15px;
+  }
+  .faq-item {
+    padding: 20px 24px;
+  }
+  .faq-header h3 {
+    font-size: 17px;
+  }
+  .faq-body p {
+    font-size: 14px;
+  }
+}

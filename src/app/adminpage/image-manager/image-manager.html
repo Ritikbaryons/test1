@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let img of images">
+          <tr *ngFor="let img of paginatedImages">
             <td>
               <div class="table-thumb">
                 <img [src]="getAssetUrl(img.image_path)" alt="thumbnail">
@@ -54,6 +54,11 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="pagination-controls" *ngIf="images.length > pageSize">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1" class="page-btn">Previous</button>
+      <span>Page {{currentPage}} of {{totalPages}}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages" class="page-btn">Next</button>
     </div>
   </div>
 </div>

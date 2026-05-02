@@ -48,9 +48,8 @@ p {
 }
 
 .social-links a:hover {
-  background-color: var(--primary-gold);
   border-color: var(--primary-gold);
-  color: var(--bg-dark);
+  color: var(--primary-gold);
 }
 
 .footer-links ul li {

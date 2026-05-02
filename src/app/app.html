@@ -4,3 +4,10 @@
 </main>
 <app-footer *ngIf="showLayout"></app-footer>
 <app-toast></app-toast>
+
+<!-- Floating WhatsApp Button (public pages only) -->
+<a *ngIf="showLayout" id="whatsapp-fab"
+  href="https://wa.me/917004742225?text=Hi%20Moments%20Studio%2C%20I%27m%20interested%20in%20your%20photography%20services!"
+  target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" title="Chat with us on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>

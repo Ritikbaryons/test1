@@ -105,6 +105,33 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   ];
 
+  faqs = [
+    {
+      question: 'What photography services do you offer?',
+      answer: 'We provide full-coverage wedding photography, cinematic films, pre-wedding couple shoots, and event photography across Patna and all of Bihar.',
+      open: false
+    },
+    {
+      question: 'How do we book a session or get a quote?',
+      answer: 'You can tap the "Get a Quote" button on our page, or reach out directly via WhatsApp using the floating button at the bottom of the screen.',
+      open: false
+    },
+    {
+      question: 'What is the turnaround time for receiving our photos?',
+      answer: 'Usually, your beautifully edited photographs and cinematic highlight films will be delivered within 4 to 6 weeks following the event.',
+      open: false
+    },
+    {
+      question: 'Do you travel outside Patna for weddings?',
+      answer: 'Yes! We love to travel and are fully available for destination weddings and out-of-station pre-wedding shoots.',
+      open: false
+    }
+  ];
+
+  toggleFaq(index: number) {
+    this.faqs[index].open = !this.faqs[index].open;
+  }
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private cd: ChangeDetectorRef,

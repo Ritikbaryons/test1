@@ -6,7 +6,7 @@
       </div>
       <p>{{companyInfo.description}}</p>
       <div class="social-links">
-        <a *ngFor="let s of companyInfo.socials" [href]="s.link"><i [class]="s.icon"></i></a>
+        <a *ngFor="let s of companyInfo.socials" [href]="s.link" target="_blank"><i [class]="s.icon"></i></a>
       </div>
     </div>
     <div class="footer-links">

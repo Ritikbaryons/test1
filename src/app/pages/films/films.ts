@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ApiService } from '../../services/api.service';
@@ -23,7 +23,8 @@ export class FilmsComponent implements OnInit {
 
   constructor(
     private sanitizer: DomSanitizer,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -34,30 +35,37 @@ export class FilmsComponent implements OnInit {
     this.apiService.getVideos().subscribe({
       next: (response: any) => {
         let rawData: any[] = [];
-        
-        // Handle both wrapped {data: []} and raw [] formats
-        if (response && response.success && Array.isArray(response.data)) {
-          rawData = response.data;
-        } else if (Array.isArray(response)) {
-          rawData = response;
+        if (response) {
+          if (Array.isArray(response)) {
+            rawData = response;
+          } else if (response.data && Array.isArray(response.data)) {
+            rawData = response.data;
+          } else if (response.data) {
+            rawData = [response.data];
+          } else if (response.videos && Array.isArray(response.videos)) {
+            rawData = response.videos;
+          } else if (typeof response === 'object' && response.url) {
+            rawData = [response];
+          }
         }
 
-        if (rawData.length > 0) {
+        if (rawData && rawData.length > 0) {
+          const hasMain = rawData.some(v => v.is_main === true || v.is_main === 1 || v.isMain === true);
+
           const fetchedVideos = rawData.map((v: any, index: number) => ({
             ...v,
-            isMain: v.hasOwnProperty('is_main') ? v.is_main : (index === 0)
+            isMain: v.is_main === true || v.is_main === 1 || v.isMain === true || (!hasMain && index === 0)
           }));
 
-          if (!fetchedVideos.some(v => v.isMain)) {
-            fetchedVideos[0].isMain = true;
-          }
-
           this.videos = fetchedVideos;
+          this.cd.detectChanges();
+        } else {
+          this.loadMockData();
         }
       },
       error: (err) => {
         console.error('Error fetching videos:', err);
-        // We already have mock data as initial state, so no action needed on error
+        this.loadMockData();
       }
     });
   }
@@ -69,10 +77,21 @@ export class FilmsComponent implements OnInit {
       { url: 'https://www.youtube.com/embed/rs-yOHGGWTM?si=3FE8BtadeccCg42f', isMain: false, title: 'Bihari Wedding highlights video' },
       { url: 'https://www.youtube.com/embed/NgHmF-ClBY0?si=0s7YN0sX97h0Vlme', isMain: false, title: 'Maternity Shoot song reel' }
     ];
+    this.cd.detectChanges();
   }
 
   getSafeUrl(url: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    if (!url) return this.sanitizer.bypassSecurityTrustResourceUrl('');
+    let embedUrl = url;
+    if (url.includes('watch?v=') && !url.includes('embed/')) {
+      embedUrl = url.replace('watch?v=', 'embed/');
+    } else if (url.includes('youtu.be/') && !url.includes('embed/')) {
+      const parts = url.split('/');
+      const idPart = parts[parts.length - 1];
+      const videoId = idPart.split('?')[0];
+      embedUrl = `https://www.youtube.com/embed/${videoId}`;
+    }
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }
 
   get mainVideo() {

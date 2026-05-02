@@ -53,7 +53,15 @@
   overflow: hidden;
 }
 
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+}
+
 .admin-table {
+  min-width: 800px;
   width: 100%;
   border-collapse: collapse;
 }

@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let video of videos">
+          <tr *ngFor="let video of paginatedVideos">
             <td>#{{video.id}}</td>
             <td><strong>{{video.title}}</strong></td>
             <td>
@@ -55,6 +55,11 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="pagination-controls" *ngIf="videos.length > pageSize">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1" class="page-btn">Previous</button>
+      <span>Page {{currentPage}} of {{totalPages}}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages" class="page-btn">Next</button>
     </div>
   </div>
 </div>

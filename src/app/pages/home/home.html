@@ -1,8 +1,20 @@
 <section class="hero">
-  <div class="video-background">
-    <video autoplay muted loop playsinline [src]="heroData.videoUrl | safeUrl">
+  <!-- Desktop: full-screen background video -->
+  <div class="video-background desktop-hero-bg">
+    <video autoplay muted loop playsinline preload="auto" [muted]="true" [src]="heroData.videoUrl | safeUrl">
       Your browser does not support the video tag.
     </video>
+  </div>
+
+  <!-- Mobile: YouTube Shorts iframe hero -->
+  <div class="mobile-hero-bg">
+    <iframe
+      src="https://www.youtube.com/embed/IdkxROhtX2U?autoplay=1&mute=1&loop=1&playlist=IdkxROhtX2U&controls=0&rel=0&playsinline=1"
+      title="Moments Studio Highlight"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
   </div>
   <div class="hero-overlay"></div>
   <div class="container hero-content">
@@ -71,10 +83,9 @@
             <div class="cta-footer">
               <a routerLink="/contact" class="btn-cta-outline">Get a Quote</a>
               <div class="cta-social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.facebook.com/moments1studio" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/moments1studio" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/c/MomentsStudio" target="_blank"><i class="fab fa-youtube"></i></a>
               </div>
             </div>
           </div>
@@ -142,3 +153,24 @@
     </div>
   </div>
 </section>
+
+<section class="faq-section section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h4 class="accent-text">FAQS</h4>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-accordion">
+      <div class="faq-item" *ngFor="let item of faqs; let i = index" [class.active]="item.open" (click)="toggleFaq(i)">
+        <div class="faq-header">
+          <h3>{{item.question}}</h3>
+          <span class="faq-icon"><i class="fas" [ngClass]="item.open ? 'fa-minus' : 'fa-plus'"></i></span>
+        </div>
+        <div class="faq-body" *ngIf="item.open">
+          <p>{{item.answer}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

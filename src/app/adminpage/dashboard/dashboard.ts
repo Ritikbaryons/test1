@@ -15,6 +15,9 @@ export class DashboardComponent {
   constructor(private router: Router) {}
 
   onLogout() {
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('isLogin');
+    }
     this.router.navigate(['/admin/login']);
   }
 }

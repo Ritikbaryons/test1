@@ -1,15 +1,20 @@
-<div class="admin-wrapper" [class.sidebar-closed]="!isSidebarOpen">
+<div class="admin-wrapper" [class.sidebar-open]="isSidebarOpen">
   <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="sidebar-header">
-      <img [src]="'assets/images/logo.svg'" alt="Logo" class="logo">
-      <span>Studio Admin</span>
+    <div class="sidebar-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <img [src]="'assets/images/logo.svg'" alt="Logo" class="logo">
+        <!-- <span>Studio Admin</span> -->
+      </div>
+      <button class="close-sidebar-btn" (click)="toggleSidebar()">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
 
     <nav class="sidebar-nav">
       <ul>
         <li *ngFor="let item of menuItems">
-          <a [routerLink]="item.path" routerLinkActive="active">
+          <a [routerLink]="item.path" routerLinkActive="active" (click)="closeSidebarOnMobile()">
             <i [class]="item.icon"></i>
             <span>{{item.label}}</span>
           </a>
