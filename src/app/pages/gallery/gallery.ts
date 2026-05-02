@@ -45,14 +45,14 @@ export class GalleryComponent implements OnInit {
             category: img.service || 'Photography',
             title: img.title || 'Moment'
           }));
-          
+
           console.log('Gallery: Mapped Images', mappedImages);
           this.images = [...mappedImages]; // Use spread to ensure reference change
         } else {
           console.warn('Gallery: Empty Data');
           this.loadMockData();
         }
-        
+
         this.isLoading = false;
         this.cdr.detectChanges(); // Force UI update
       },
@@ -67,9 +67,9 @@ export class GalleryComponent implements OnInit {
 
   loadMockData(): void {
     this.images = [
-      { url: 'assets/images/wedding_hero_1777525311142.png', location: 'Patna, Bihar', category: 'Wedding' },
-      { url: 'assets/images/wedding_couple_portrait_1777525329405.png', location: 'Gaya, Bihar', category: 'Wedding' },
-      { url: 'assets/images/pre_wedding_outdoor_1777525347926.png', location: 'Rajgir, Bihar', category: 'Pre-Wedding' }
+      { url: '/assets/images/wedding_hero_1777525311142.png', location: 'Patna, Bihar', category: 'Wedding' },
+      { url: '/assets/images/wedding_couple_portrait_1777525329405.png', location: 'Gaya, Bihar', category: 'Wedding' },
+      { url: '/assets/images/pre_wedding_outdoor_1777525347926.png', location: 'Rajgir, Bihar', category: 'Pre-Wedding' }
     ];
   }
 }
