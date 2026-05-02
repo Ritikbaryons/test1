@@ -40,7 +40,7 @@ export class GalleryComponent implements OnInit {
 
         if (rawData && rawData.length > 0) {
           const mappedImages = rawData.map((img: any) => ({
-            url: `http://localhost:8080${img.image_path}`,
+            url: this.apiService.getAssetUrl(img.image_path),
             location: img.location || 'Patna, Bihar',
             category: img.service || 'Photography',
             title: img.title || 'Moment'

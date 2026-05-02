@@ -29,17 +29,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     {
       title: 'Wedding Photography',
       desc: 'Timeless wedding photography capturing real emotions and beautiful moments of your love story. Ever!',
-      img: 'images/HomeWedding_Services.png'
+      img: 'assets/images/HomeWedding_Services.png'
     },
     {
       title: 'Pre Wedding Photography',
       desc: 'Pre-wedding photography capturing your love, chemistry, and moments in a natural, stylish story.',
-      img: 'images/Homepage_Pre_Wedding_Photography.png'
+      img: 'assets/images/Homepage_Pre_Wedding_Photography.png'
     },
     {
       title: 'Event Photography',
       desc: 'Professional event photography capturing key moments, emotions, and details with clarity and style.',
-      img: 'images/Homepage_Event Photography.png'
+      img: 'assets/images/Homepage_Event Photography.png'
     }
   ];
 
@@ -59,19 +59,19 @@ export class HomeComponent implements OnInit, OnDestroy {
       stars: '★★★★★',
       text: '"I had a great experience with Moments Studio. The team is skilled, cooperative, and understands client requirements very well. Their communication and work quality are excellent. Highly recommended!"',
       author: 'Pankaj kumar sah',
-      img: 'images/user1.png'
+      img: 'assets/images/user1.png'
     },
     {
       stars: '★★★★★',
       text: '"Best photographers in Patna! They made our wedding look like a Bollywood movie. Every moment was captured with so much love and detail. Highly recommended to everyone!"',
       author: 'Amit & Sneha',
-      img: 'images/user2.png'
+      img: 'assets/images/user2.png'
     },
     {
       stars: '★★★★★',
       text: '"Their eye for detail is amazing. The pre-wedding shoot was so comfortable and the results were stunning. Professional and punctual throughout the process."',
       author: 'Rohan Verma',
-      img: 'images/user3.png'
+      img: 'assets/images/user3.png'
     }
   ];
 
