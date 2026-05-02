@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/api'
+  apiUrl: 'https://mediumturquoise-grouse-758385.hostingersite.com/api'
 };
