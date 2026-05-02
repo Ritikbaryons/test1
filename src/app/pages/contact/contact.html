@@ -1,57 +1,103 @@
 <section class="contact-header section-padding" style="padding-top: 150px;">
   <div class="container text-center">
     <h4 class="gold-text">GET IN TOUCH</h4>
-    <h2>Book Your Shoot</h2>
+    <h2>Let's Create Magic Together</h2>
+      <p class="quote-text">Photography is the only language that can be understood anywhere in the world.</p>
+      <span class="quote-author">— Moments Studio</span>
   </div>
 </section>
 
-<section class="contact-form-section section-padding">
-  <div class="container grid-2">
-    <div class="contact-info">
-      <h3>Contact Details</h3>
-      <p>Feel free to reach out to us for any inquiries or bookings. We are here to help you capture your special moments.</p>
-      
-      <div class="info-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <div>
-          <h4>Location</h4>
-          <p>123 Photography Lane, Patna, Bihar</p>
-        </div>
+<section class="contact-section section-padding">
+  <div class="container">
+    <div class="contact-wrapper">
+      <!-- Left Side: Form -->
+      <div class="contact-form-card">
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name*</label>
+              <input type="text" id="name" name="name" [(ngModel)]="formData.name" required class="form-input"
+                placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone*</label>
+              <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required class="form-input"
+                placeholder="Enter phone number">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" name="email" [(ngModel)]="formData.email" required class="form-input"
+                placeholder="Enter email address">
+            </div>
+            <div class="form-group">
+              <label for="city">City*</label>
+              <input type="text" id="city" name="city" [(ngModel)]="formData.city" required class="form-input"
+                placeholder="Your city">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Interested Service*</label>
+            <select id="service" name="service" [(ngModel)]="formData.service" required class="form-input">
+              <option value="" disabled selected>Select a service</option>
+              <option value="Wedding">Wedding Photography</option>
+              <option value="Pre-Wedding">Pre-Wedding Photography</option>
+              <option value="Maternity">Maternity Photography</option>
+              <option value="Birthday">Birthday Photography</option>
+              <option value="Event">Event Photography</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" [(ngModel)]="formData.message" rows="4" class="form-input"
+              placeholder="Tell us more about your event..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="!contactForm.form.valid || isSubmitting">
+            {{isSubmitting ? 'Sending...' : 'Send Message'}}
+          </button>
+        </form>
       </div>
 
-      <div class="info-item">
-        <i class="fas fa-phone-alt"></i>
-        <div>
-          <h4>Call Us</h4>
-          <p>+91 98765 43210</p>
+      <!-- Right Side: Info & Map -->
+      <div class="contact-info-panel">
+        <div class="info-box">
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-text">
+              <h4>Our Studio</h4>
+              <p>Moments Studio, Patna, Bihar 800001</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="info-text">
+              <h4>Call Us</h4>
+              <p>+91 98765 43210</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-text">
+              <h4>Email Us</h4>
+              <p>info@momentsstudio.in</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.585721111111!2d85.1343611!3d25.6113527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed59181e6bcb15%3A0xed8e3d3b8aa7bbc1!2sMoments%20Studio!5e0!3m2!1sen!2sin!4v1714571738000!5m2!1sen!2sin"
+            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
-
-      <div class="info-item">
-        <i class="fas fa-envelope"></i>
-        <div>
-          <h4>Email</h4>
-          <p>info@momentsstudio.in</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-container">
-      <form (submit)="onSubmit()">
-        <div class="form-group">
-          <input type="text" placeholder="Your Name" required>
-        </div>
-        <div class="form-group">
-          <input type="email" placeholder="Your Email" required>
-        </div>
-        <div class="form-group">
-          <input type="text" placeholder="Subject">
-        </div>
-        <div class="form-group">
-          <textarea placeholder="Your Message" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
-      </form>
     </div>
   </div>
 </section>

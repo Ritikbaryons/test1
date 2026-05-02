@@ -1,0 +1,351 @@
+.admin-container {
+  padding: 30px;
+  animation: fadeIn 0.5s ease;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-header h2 {
+  color: #333;
+  margin: 0;
+  font-size: 24px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.add-btn {
+  background: var(--primary-gold);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background: #b8860b;
+  transform: translateY(-2px);
+}
+
+.refresh-btn {
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  color: #666;
+}
+
+.table-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  background: #f8f9fa;
+  padding: 15px 20px;
+  text-align: left;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #777;
+}
+
+.admin-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+  color: #333 !important;
+}
+
+.admin-table td strong {
+  color: #1a1a1a;
+  display: block;
+}
+
+.video-link {
+  color: #007bff;
+  font-size: 13px;
+  text-decoration: underline;
+  max-width: 250px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  background: #eee;
+  color: #777;
+}
+
+.status-badge.main-video {
+  background: #fff3e0;
+  color: #ef6c00;
+  border: 1px solid #ffe0b2;
+}
+
+.action-group {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.action-btn.edit { background: #fff3e0; color: #ef6c00; }
+.action-btn.delete { background: #ffebee; color: #c62828; }
+
+.action-btn:hover { transform: scale(1.1); }
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: white;
+  width: 95%;
+  max-width: 550px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+  padding: 24px 30px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+}
+
+.close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #999;
+  background: #f5f5f5;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: #eeeeee;
+  color: #333;
+}
+
+.modal-body {
+  padding: 30px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #eee;
+  border-radius: 12px;
+  font-size: 14px;
+  background: #fafafa;
+  transition: all 0.3s ease;
+  color: #333;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-gold);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+  outline: none;
+}
+
+.hint {
+  display: block;
+  margin-top: 8px;
+  color: #999;
+  font-size: 11px;
+  font-style: italic;
+}
+
+.check-group {
+  padding: 10px 0;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #333;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+/* Custom Checkbox Design */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  display: inline-block;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px;
+  min-height: 22px;
+  background-color: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  margin-right: 12px;
+  position: relative;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.checkbox-container:hover .checkmark {
+  border-color: var(--primary-gold);
+}
+
+.checkbox-container input:checked + .checkmark {
+  background-color: var(--primary-gold);
+  border-color: var(--primary-gold);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input:checked + .checkmark:after {
+  display: block;
+}
+
+.modal-footer {
+  padding: 20px 30px;
+  background: #fafafa;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.btn-cancel {
+  padding: 12px 24px;
+  color: #666;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: 0.2s;
+}
+
+.btn-cancel:hover {
+  background: #f0f0f0;
+}
+
+.btn-save { 
+  background: var(--primary-gold); 
+  color: white; 
+  padding: 12px 30px; 
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-save:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  background: #b8860b;
+}
+
+.btn-save:disabled {
+  background: #e0e0e0;
+  color: #999;
+  box-shadow: none;
+  cursor: not-allowed;
+}

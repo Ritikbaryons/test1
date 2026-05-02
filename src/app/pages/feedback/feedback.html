@@ -1,0 +1,88 @@
+<div class="feedback-page">
+  <div class="feedback-container">
+    
+    <!-- Loading State -->
+    <div class="state-container" *ngIf="isLoading">
+      <div class="loader"></div>
+      <p>Validating your invitation...</p>
+    </div>
+
+    <!-- Invalid Token State -->
+    <div class="state-container error" *ngIf="!isLoading && isInvalidToken">
+      <i class="fas fa-exclamation-circle"></i>
+      <h2>Invalid Link</h2>
+      <p>This feedback link is either invalid or has expired.</p>
+      <a href="/" class="btn-home">Return to Home</a>
+    </div>
+
+    <!-- Success State -->
+    <div class="state-container success" *ngIf="!isLoading && isSuccess">
+      <div class="success-icon">
+        <i class="fas fa-check"></i>
+      </div>
+      <h2>Thank You!</h2>
+      <p>Your feedback has been submitted successfully. We appreciate your time!</p>
+      <a href="/" class="btn-home">Visit Our Website</a>
+    </div>
+
+    <div class="form-card" *ngIf="!isLoading && !isInvalidToken && !isSuccess">
+      <div class="form-header">
+        <div class="logo-container">
+          <img src="assets/images/logo.svg" alt="Moments Studio Logo" class="form-logo">
+        </div>
+        <h2>Share Your Experience</h2>
+        <p *ngIf="projectInfo">We loved working on your <strong>{{projectInfo.projectName}}</strong>. Please let us know how we did!</p>
+      </div>
+
+      <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" formControlName="customerName" placeholder="John Doe">
+        </div>
+
+        <div class="form-group">
+          <label>How would you rate our service?</label>
+          <div class="star-rating">
+            <button type="button" *ngFor="let star of [1,2,3,4,5]" 
+                    (click)="setRating(star)"
+                    (mouseenter)="hoverRating = star"
+                    (mouseleave)="hoverRating = 0"
+                    class="star-btn">
+              <i class="fas fa-star" [class.active]="star <= (hoverRating || rating)"></i>
+            </button>
+            <span class="rating-label" *ngIf="rating > 0">{{rating}}/5 Stars</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Your Review</label>
+          <textarea formControlName="description" rows="5" placeholder="Share your thoughts about our photography and service..."></textarea>
+          <small class="char-hint" [class.valid]="feedbackForm.get('description')?.valid">
+            Minimum 10 characters required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label>Add a Photo (Optional)</label>
+          <div class="upload-area" (click)="fileInput.click()">
+            <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden>
+            
+            <div class="upload-placeholder" *ngIf="!imagePreview">
+              <i class="fas fa-camera"></i>
+              <span>Click to upload a photo from your shoot</span>
+            </div>
+
+            <div class="upload-preview" *ngIf="imagePreview">
+              <img [src]="imagePreview" alt="preview">
+              <div class="change-overlay">Change Photo</div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn" [disabled]="feedbackForm.invalid || isSubmitting">
+          {{isSubmitting ? 'Submitting...' : 'Submit Feedback'}}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

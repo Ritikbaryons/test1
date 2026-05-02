@@ -1,0 +1,91 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <h2>Contact Inquiries</h2>
+    <button class="refresh-btn" (click)="loadInquiries()">
+      <i class="fas fa-sync-alt" [class.fa-spin]="isLoading"></i> Refresh
+    </button>
+  </div>
+
+  <div class="table-card">
+    <div class="table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>City</th>
+            <th>Service</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of inquiries">
+            <td>#{{item.id}}</td>
+            <td><strong>{{item.name}}</strong></td>
+            <td>{{item.phone_number}}</td>
+            <td>{{item.city}}</td>
+            <td><span class="service-badge">{{item.services}}</span></td>
+            <td>{{item.createdAt | date:'shortDate'}}</td>
+            <td>
+              <button class="view-btn" (click)="viewInquiry(item)">
+                <i class="fas fa-eye"></i> View
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="inquiries.length === 0 && !isLoading">
+            <td colspan="7" class="empty-state">No inquiries found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Overlay -->
+<div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>Inquiry Details</h3>
+      <button class="close-modal" (click)="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" *ngIf="selectedInquiry">
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Full Name</label>
+          <p>{{selectedInquiry.name}}</p>
+        </div>
+        <div class="info-item">
+          <label>Phone Number</label>
+          <p>{{selectedInquiry.phone_number}}</p>
+        </div>
+        <div class="info-item">
+          <label>Email Address</label>
+          <p>{{selectedInquiry.gmail}}</p>
+        </div>
+        <div class="info-item">
+          <label>City</label>
+          <p>{{selectedInquiry.city}}</p>
+        </div>
+        <div class="info-item full-width">
+          <label>Service Requested</label>
+          <p class="badge-p">{{selectedInquiry.services}}</p>
+        </div>
+        <div class="info-item full-width">
+          <label>Message</label>
+          <div class="message-box">
+            {{selectedInquiry.message || 'No message provided.'}}
+          </div>
+        </div>
+        <div class="info-item">
+          <label>Received On</label>
+          <p>{{selectedInquiry.createdAt | date:'medium'}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-close-footer" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</div>

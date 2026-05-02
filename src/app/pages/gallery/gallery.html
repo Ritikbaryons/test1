@@ -6,12 +6,33 @@
 </section>
 
 <section class="gallery-grid section-padding">
-  <div class="container masonry">
-    <div class="gallery-item" *ngFor="let img of images">
-      <img [src]="img" alt="Gallery Image">
-      <div class="overlay">
-        <i class="fas fa-search-plus"></i>
+  <div class="container">
+    
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="text-center py-5">
+      <p class="gold-text">Fetching your cinematic moments...</p>
+      <div class="spinner-border text-gold" role="status"></div>
+    </div>
+
+    <!-- Gallery Grid (Only show when not loading and has images) -->
+    <div class="masonry" *ngIf="!isLoading && images.length > 0">
+      <div class="gallery-item" *ngFor="let img of images">
+        <div class="gallery-img-wrap">
+          <img [src]="img.url" [alt]="img.category">
+          <div class="gallery-overlay">
+            <div class="overlay-info">
+              <span class="category">{{img.category}}</span>
+              <p class="location"><i class="fas fa-map-marker-alt"></i> {{img.location}}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Empty State (Only show when not loading and no images) -->
+    <div *ngIf="!isLoading && images.length === 0" class="text-center py-5">
+      <p>No moments found yet. Our lens is ready for your story!</p>
+    </div>
+
   </div>
 </section>

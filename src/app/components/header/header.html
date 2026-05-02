@@ -1,18 +1,38 @@
 <header [class.scrolled]="isScrolled">
   <div class="header-content">
-    <div class="logo" routerLink="/">
+    <div class="logo" routerLink="/" (click)="closeMenu()">
       <img src="/images/logo.svg" alt="Moments Studio Logo" style="height: 40px;">
     </div>
-    <nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-toggle" (click)="toggleMenu()">
+      <i class="fas" [class.fa-bars]="!isMenuOpen" [class.fa-times]="isMenuOpen"></i>
+    </button>
+
+    <nav [class.open]="isMenuOpen">
       <ul>
-        <li *ngFor="let link of navLinks">
+        <li *ngFor="let link of navLinks" [class.has-dropdown]="link.children">
           <ng-container *ngIf="!link.external; else externalLink">
-            <a [routerLink]="link.path" routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact: !!link.exact}">{{link.label}}</a>
+            <a [routerLink]="link.path === '#' ? null : link.path" routerLinkActive="active" 
+               [routerLinkActiveOptions]="{exact: !!link.exact}"
+               (click)="link.children ? toggleDropdown(link.label, $event) : closeMenu()">
+              {{link.label}}
+              <i *ngIf="link.children" class="fas fa-chevron-down dropdown-icon" [class.rotate]="activeDropdown === link.label"></i>
+            </a>
           </ng-container>
           <ng-template #externalLink>
-            <a [href]="link.path">{{link.label}}</a>
+            <a [href]="link.path" (click)="closeMenu()">
+              {{link.label}}
+              <i *ngIf="link.children" class="fas fa-chevron-down dropdown-icon"></i>
+            </a>
           </ng-template>
+
+          <!-- Dropdown Menu -->
+          <ul *ngIf="link.children" class="dropdown-menu" [class.mobile-show]="activeDropdown === link.label">
+            <li *ngFor="let child of link.children">
+              <a [routerLink]="child.path" (click)="closeMenu()">{{child.label}}</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>

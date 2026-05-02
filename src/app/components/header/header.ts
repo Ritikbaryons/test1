@@ -7,6 +7,7 @@ interface NavLink {
   label: string;
   exact?: boolean;
   external?: boolean;
+  children?: NavLink[];
 }
 
 @Component({
@@ -18,14 +19,47 @@ interface NavLink {
 })
 export class HeaderComponent {
   isScrolled = false;
+  isMenuOpen = false;
+  activeDropdown: string | null = null;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    if (!this.isMenuOpen) this.activeDropdown = null;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+    this.activeDropdown = null;
+  }
+
+  toggleDropdown(label: string, event: Event) {
+    event.preventDefault();
+    this.activeDropdown = this.activeDropdown === label ? null : label;
+  }
 
   navLinks: NavLink[] = [
     { path: '/', label: 'Home', exact: true },
-    { path: '/about', label: 'About Us' },
-    { path: '/services', label: 'Services' },
-    { path: '/gallery', label: 'Images' },
-    { path: '/films', label: 'Films' },
-
+    { path: '/about', label: 'About' },
+    { 
+      path: '#', 
+      label: 'Services',
+      children: [
+        { path: '/service/wedding', label: 'Wedding Photography' },
+        { path: '/service/prewedding', label: 'Prewedding Photography' },
+        { path: '/service/engagement', label: 'Engagement Photography' },
+        { path: '/service/maternity', label: 'Maternity Photography' },
+        { path: '/service/birthday', label: 'Birthday Photography' },
+        { path: '/service/event', label: 'Event Photography' }
+      ]
+    },
+    { 
+      path: '#', 
+      label: 'Gallery',
+      children: [
+        { path: '/gallery', label: 'Image' },
+        { path: '/films', label: 'Films' }
+      ]
+    },
     { path: '/contact', label: 'Contact Us' }
   ];
 

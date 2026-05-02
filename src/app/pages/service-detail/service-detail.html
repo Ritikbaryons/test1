@@ -1,0 +1,175 @@
+<ng-container *ngIf="serviceData">
+  <!-- Top Section: Split Layout -->
+  <section class="service-hero section-padding">
+    <div class="container grid-2 align-center">
+      <div class="service-hero-content">
+        <h4 class="accent-eyebrow">{{serviceData.subtitle}}</h4>
+        <h1 class="service-title">{{serviceData.title}}</h1>
+        <p class="service-desc">{{serviceData.description}}</p>
+        <a routerLink="/contact" class="btn-primary" style="margin-top: 20px; display: inline-block;">Get a Quote</a>
+      </div>
+      <div class="service-hero-image">
+        <div class="img-wrapper">
+          <img [src]="serviceData.mainImage" [alt]="serviceData.title" class="main-img">
+          <div class="img-accent-box"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SEO Content Section -->
+  <section class="seo-section section-padding">
+    <div class="container text-center">
+      <h3 class="seo-title">{{serviceData.seoContent.title}}</h3>
+      <p class="seo-text">{{serviceData.seoContent.text}}</p>
+    </div>
+  </section>
+  <!-- Recent Work Slider -->
+  <section class="recent-work-section section-padding">
+    <div class="container text-center">
+      <!-- <h4 class="accent-eyebrow">PORTFOLIO</h4> -->
+      <h2 class="section-title">Recent {{serviceData.title}} Work</h2>
+
+      <div class="slider-container">
+        <button class="slider-btn prev-btn" (click)="prevSlide()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="slider-track-wrap">
+          <div class="slider-track" [style.transform]="'translateX(-' + (currentSlideIndex * (100 / 3)) + '%)'">
+            <div class="portfolio-card" *ngFor="let item of serviceData.portfolioItems">
+              <div class="card-img-wrap">
+                <img [src]="item.image" [alt]="item.title">
+                <div class="card-overlay">
+                  <div class="overlay-content">
+                    <span class="card-category">{{item.category}}</span>
+                    <h3 class="card-title">{{item.title}}</h3>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> {{item.location}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="slider-btn next-btn" (click)="nextSlide()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="slider-dots">
+        <span class="dot" *ngFor="let item of serviceData.portfolioItems; let i = index"
+          [class.active]="i === currentSlideIndex" (click)="currentSlideIndex = i"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-choose-section section-padding">
+    <div class="container grid-2">
+      <div class="why-choose-left">
+        <h2 class="why-choose-heading">Why Choose Moments Studio for Your {{serviceData.title}} in Patna?</h2>
+      </div>
+      <div class="why-choose-right">
+        <p class="why-choose-intro">When couples search for the <strong>best {{serviceData.title.toLowerCase()}} in
+            Patna</strong>, they trust Moments Studio for quality and creativity.</p>
+        <ul class="why-choose-list">
+          <li *ngFor="let feature of serviceData.whyChooseUs">
+            {{feature.text}}
+          </li>
+        </ul>
+        <p class="why-choose-outro">We focus on storytelling that reflects your personality and relationship.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Get in Touch Form -->
+  <section class="get-in-touch-section section-padding">
+    <div class="container">
+      <h2 class="form-heading">Get in touch</h2>
+      <div class="grid-2 align-center">
+        <div class="get-in-touch-left">
+          <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Name*</label>
+                <input type="text" id="name" name="name" [(ngModel)]="formData.name" required class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone*</label>
+                <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone" required class="form-input">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">City You Live In*</label>
+                <input type="text" id="city" name="city" [(ngModel)]="formData.city" required class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Gmail*</label>
+                <input type="email" id="email" name="email" [(ngModel)]="formData.email" required class="form-input">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Select a Service*</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="service" value="Wedding Photography" [(ngModel)]="formData.service"
+                    required>
+                  Wedding Photography
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="service" value="Pre Wedding Photography" [(ngModel)]="formData.service">
+                  Pre Wedding Photography
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="service" value="Birthday Photography" [(ngModel)]="formData.service">
+                  Birthday Photography
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="service" value="Event Photography" [(ngModel)]="formData.service">
+                  Event Photography
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="service" value="Others" [(ngModel)]="formData.service">
+                  Others
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="form-submit-btn" [disabled]="!contactForm.form.valid">Submit</button>
+          </form>
+        </div>
+        <div class="get-in-touch-right">
+          <div class="form-image-wrapper">
+            <img [src]="serviceData.mainImage" alt="Contact Us" class="form-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ Section -->
+  <section class="faq-section section-padding">
+    <div class="container narrow-container">
+      <h2 class="form-heading">Frequently Asked Questions</h2>
+
+      <div class="faq-accordion">
+        <div class="faq-item" *ngFor="let faq of serviceData.faqs; let i = index" [class.active]="faq.active">
+          <div class="faq-question" (click)="toggleFaq(i)">
+            <h3>{{faq.question}}</h3>
+            <span class="faq-icon">
+              <i class="fas" [class.fa-plus]="!faq.active" [class.fa-minus]="faq.active"></i>
+            </span>
+          </div>
+          <div class="faq-answer" *ngIf="faq.active">
+            <p>{{faq.answer}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

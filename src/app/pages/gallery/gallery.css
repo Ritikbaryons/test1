@@ -1,50 +1,97 @@
 .text-center { text-align: center; }
-.gallery-header h2 { font-size: 45px; margin-top: 10px; }
+.gallery-header h2 { 
+  font-family: 'Playfair Display', serif;
+  font-size: 52px; 
+  margin-top: 10px; 
+  color: #000;
+}
+
+.gallery-header {
+  background: var(--bg-soft-pink);
+}
+
+.gallery-grid {
+  background: var(--bg-soft-pink);
+}
 
 .masonry {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 30px;
 }
 
-.gallery-item {
+.gallery-img-wrap {
   position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.gallery-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  aspect-ratio: 3/4;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
 }
 
-.gallery-item:hover img {
-  transform: scale(1.1);
+.gallery-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
 }
 
-.overlay {
+.gallery-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(212, 175, 55, 0.7);
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  padding: 25px;
   opacity: 0;
-  transition: var(--transition);
+  transition: opacity 0.4s ease;
 }
 
-.gallery-item:hover .overlay {
+.overlay-info {
+  color: #fff;
+  transform: translateY(15px);
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .gallery-img-wrap {
+  transform: translateY(-8px);
+}
+
+.gallery-item:hover .gallery-img-wrap img {
+  transform: scale(1.1);
+}
+
+.gallery-item:hover .gallery-overlay {
   opacity: 1;
 }
 
-.overlay i {
-  font-size: 30px;
-  color: white;
+.gallery-item:hover .overlay-info {
+  transform: translateY(0);
+}
+
+.category {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-gold);
+  margin-bottom: 5px;
+  display: block;
+}
+
+.location {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.location i {
+  color: var(--primary-gold);
+  margin-right: 5px;
 }
