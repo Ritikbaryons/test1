@@ -1,40 +1,65 @@
-.text-center { text-align: center; }
-.gallery-header h2 { 
-  font-family: 'Playfair Display', serif;
-  font-size: 52px; 
-  margin-top: 10px; 
-  color: #000;
+.text-center {
+  text-align: center;
 }
 
 .gallery-header {
   background: var(--bg-soft-pink);
+  padding-bottom: 30px;
+  overflow: hidden; /* Prevent scattered images from affecting layout */
+}
+
+.gallery-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  margin-top: 10px;
+  color: #1a1a1a;
+  font-weight: 700;
 }
 
 .gallery-grid {
   background: var(--bg-soft-pink);
+  overflow: hidden; /* Prevent scattered images from affecting layout */
 }
 
 .masonry {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-gap: 40px;
+}
+
+/* --- Entry Animation Logic --- */
+.gallery-item {
+  opacity: 0;
+  /* Starting scattered state */
+  transform: translate(var(--tx), var(--ty)) rotate(var(--tr)) scale(0.6);
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+  pointer-events: none; /* Disable hover while animating in */
+}
+
+/* Triggered by IntersectionObserver */
+.gallery-item.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) rotate(0) scale(1);
+  pointer-events: auto;
 }
 
 .gallery-img-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 3/4;
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fff;
 }
 
 .gallery-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .gallery-overlay {
@@ -43,55 +68,99 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.85) 100%);
   display: flex;
   align-items: flex-end;
-  padding: 25px;
+  padding: 35px;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
 }
 
 .overlay-info {
   color: #fff;
-  transform: translateY(15px);
-  transition: transform 0.4s ease;
+  width: 100%;
 }
 
+.overlay-info .category {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.overlay-info .location {
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0.1s;
+}
+
+/* --- Premium Hover Effects --- */
 .gallery-item:hover .gallery-img-wrap {
-  transform: translateY(-8px);
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
 }
 
 .gallery-item:hover .gallery-img-wrap img {
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
 .gallery-item:hover .gallery-overlay {
   opacity: 1;
 }
 
-.gallery-item:hover .overlay-info {
+.gallery-item:hover .overlay-info .category,
+.gallery-item:hover .overlay-info .location {
   transform: translateY(0);
+  opacity: 1;
+}
+
+/* --- Typography & Elements --- */
+.gold-text {
+  color: var(--primary-gold);
+  letter-spacing: 4px;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .category {
   font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   color: var(--primary-gold);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: block;
 }
 
 .location {
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
 }
 
 .location i {
   color: var(--primary-gold);
-  margin-right: 5px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .masonry {
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+  }
+  
+  .gallery-header h2 {
+    font-size: 38px;
+  }
+  
+  .gallery-img-wrap {
+    aspect-ratio: 4/5;
+  }
 }

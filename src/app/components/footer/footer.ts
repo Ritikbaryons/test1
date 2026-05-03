@@ -22,21 +22,19 @@ export class FooterComponent {
   companyLinks = [
     { label: 'Home', path: '/' },
     { label: 'About Us', path: '/about' },
-    { label: 'FAQs', path: '#' },
-    { label: 'Blog', path: '#' },
     { label: 'Contact Us', path: '/contact' }
   ];
 
   serviceLinks = [
-    { label: 'Wedding Photography', path: '/services' },
-    { label: 'Pre-Wedding Shoot', path: '/services' },
-    { label: 'Event Photography', path: '/services' },
-    { label: 'Cinematography', path: '/services' }
+    { label: 'Wedding Photography', path: '/service/wedding' },
+    { label: 'Pre-Wedding Shoot', path: '/service/prewedding' },
+    { label: 'Event Photography', path: '/service/event' },
+    { label: 'Cinematography', path: '/service/wedding' } // Cinematography is often part of wedding
   ];
 
   contactDetails = {
     address: 'Patna, Bihar, India',
-    email: 'info@momentsstudio.in',
-    phone: '+91 98765 43210'
+    email: 'momentsstudio674@gmail.com',
+    phone: '+91 70047 42225'
   };
 }

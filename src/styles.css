@@ -4,13 +4,14 @@
   --primary-gold: #D4AF37;
   --secondary-gold: #FFD700;
   --gold-gradient: linear-gradient(135deg, #B8860B 0%, #FFD700 50%, #D4AF37 100%);
-  --bg-dark: #050A18;
-  --bg-darker: #02050D;
+  --bg-dark: #FFFFFF;
+  --bg-darker: #FFF5F6;
+  --bg-footer: #050A18;
   --bg-light: #FFFFFF;
   --bg-soft-pink: #FDF5F5;
   --text-dark: #1A1A1A;
   --text-light: #FFFFFF;
-  --text-muted: #A0A0A0;
+  --text-muted: #666666;
   --accent-pink: #FFE4E1;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -24,7 +25,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: var(--bg-dark);
-  color: var(--text-light);
+  color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
 }

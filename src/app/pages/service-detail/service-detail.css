@@ -108,6 +108,7 @@
   flex: 0 0 33.333%;
   padding: 15px;
   box-sizing: border-box;
+  transition: flex 0.3s ease;
 }
 
 .card-img-wrap {
@@ -216,8 +217,13 @@
   transform: translateY(-50%) scale(1.1);
 }
 
-.prev-btn { left: -25px; }
-.next-btn { right: -25px; }
+.prev-btn {
+  left: -25px;
+}
+
+.next-btn {
+  right: -25px;
+}
 
 .slider-dots {
   display: flex;
@@ -261,7 +267,8 @@
   gap: 30px;
 }
 
-.why-choose-intro, .why-choose-outro {
+.why-choose-intro,
+.why-choose-outro {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
   line-height: 1.4;
@@ -290,7 +297,9 @@
   color: #000;
 }
 
-.mb-50 { margin-bottom: 50px; }
+.mb-50 {
+  margin-bottom: 50px;
+}
 
 /* Get in Touch Section */
 .get-in-touch-section {
@@ -499,21 +508,67 @@
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive */
 @media (max-width: 992px) {
-  .grid-2 { grid-template-columns: 1fr; gap: 30px; }
-  .service-title { font-size: 42px; }
-  .slide img { height: 400px; }
-  .why-choose-grid { grid-template-columns: 1fr; }
-  .slider-btn { display: none; }
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .service-title {
+    font-size: 42px;
+  }
+
+  .slide img {
+    height: 400px;
+  }
+
+  .why-choose-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-card {
+    flex: 0 0 100%;
+    padding: 0 10px;
+  }
+
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .prev-btn {
+    left: 5px;
+  }
+
+  .next-btn {
+    right: 5px;
+  }
 }
 
 @media (max-width: 768px) {
-  .service-hero-content { text-align: center; }
-  .service-desc { margin-left: auto; margin-right: auto; }
-  .main-img { height: 350px; }
+  .service-hero-content {
+    text-align: center;
+  }
+
+  .service-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .main-img {
+    height: 350px;
+  }
 }

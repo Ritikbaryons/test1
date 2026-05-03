@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 
@@ -9,7 +9,7 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './gallery.html',
   styleUrl: './gallery.css'
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit, AfterViewInit {
   pageTitle = 'Capturing Memories';
   pageSubtitle = 'OUR WORK';
 
@@ -18,11 +18,16 @@ export class GalleryComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private el: ElementRef
   ) { }
 
   ngOnInit(): void {
     this.fetchImages();
+  }
+
+  ngAfterViewInit(): void {
+    this.initScrollReveal();
   }
 
   fetchImages(): void {
@@ -43,33 +48,49 @@ export class GalleryComponent implements OnInit {
             url: this.apiService.getAssetUrl(img.image_path),
             location: img.location || 'Patna, Bihar',
             category: img.service || 'Photography',
-            title: img.title || 'Moment'
+            title: img.title || 'Moment',
+            // Scatter values for animation
+            tx: Math.floor(Math.random() * 400 - 200) + 'px',
+            ty: Math.floor(Math.random() * 400 - 200) + 'px',
+            tr: Math.floor(Math.random() * 40 - 20) + 'deg'
           }));
 
-          console.log('Gallery: Mapped Images', mappedImages);
-          this.images = [...mappedImages]; // Use spread to ensure reference change
+          this.images = [...mappedImages];
         } else {
-          console.warn('Gallery: Empty Data');
           this.loadMockData();
         }
 
         this.isLoading = false;
-        this.cdr.detectChanges(); // Force UI update
+        this.cdr.detectChanges();
+        setTimeout(() => this.initScrollReveal(), 100);
       },
       error: (err) => {
-        console.error('Gallery: API Error', err);
         this.loadMockData();
         this.isLoading = false;
         this.cdr.detectChanges();
+        setTimeout(() => this.initScrollReveal(), 100);
       }
     });
   }
 
+  private initScrollReveal(): void {
+    const items = this.el.nativeElement.querySelectorAll('.gallery-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach((item: Element) => observer.observe(item));
+  }
+
   loadMockData(): void {
     this.images = [
-      { url: '/assets/images/wedding_hero_1777525311142.png', location: 'Patna, Bihar', category: 'Wedding' },
-      { url: '/assets/images/wedding_couple_portrait_1777525329405.png', location: 'Gaya, Bihar', category: 'Wedding' },
-      { url: '/assets/images/pre_wedding_outdoor_1777525347926.png', location: 'Rajgir, Bihar', category: 'Pre-Wedding' }
+      { url: '/assets/images/wedding_hero_1777525311142.png', location: 'Patna, Bihar', category: 'Wedding', tx: '-50px', ty: '80px', tr: '5deg' },
+      { url: '/assets/images/wedding_couple_portrait_1777525329405.png', location: 'Gaya, Bihar', category: 'Wedding', tx: '60px', ty: '-40px', tr: '-8deg' },
+      { url: '/assets/images/pre_wedding_outdoor_1777525347926.png', location: 'Rajgir, Bihar', category: 'Pre-Wedding', tx: '-30px', ty: '-90px', tr: '12deg' }
     ];
   }
 }

@@ -97,7 +97,7 @@ nav ul li a:hover::after {
   min-width: 200px;
   padding: 5px 0;
   border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid #eeeeee;
   opacity: 0;
   visibility: hidden;
@@ -176,7 +176,7 @@ nav ul li a:hover::after {
     transform: translateY(-100%);
     transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     z-index: 1000;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
   }
@@ -227,14 +227,16 @@ nav ul li a:hover::after {
     box-shadow: none;
     background: transparent;
     padding: 0;
-    display: none !important; /* Hide by default on mobile */
+    display: none !important;
+    /* Hide by default on mobile */
     width: 100%;
     transform: none;
     transition: none;
   }
 
   .dropdown-menu.mobile-show {
-    display: block !important; /* Only show when toggled */
+    display: block !important;
+    /* Only show when toggled */
     background: #f9f9f9;
     padding: 15px 0;
     margin-top: 10px;

@@ -40,8 +40,8 @@ export class HeaderComponent {
   navLinks: NavLink[] = [
     { path: '/', label: 'Home', exact: true },
     { path: '/about', label: 'About' },
-    { 
-      path: '#', 
+    {
+      path: '#',
       label: 'Services',
       children: [
         { path: '/service/wedding', label: 'Wedding Photography' },
@@ -52,8 +52,8 @@ export class HeaderComponent {
         { path: '/service/event', label: 'Event Photography' }
       ]
     },
-    { 
-      path: '#', 
+    {
+      path: '#',
       label: 'Gallery',
       children: [
         { path: '/gallery', label: 'Image' },

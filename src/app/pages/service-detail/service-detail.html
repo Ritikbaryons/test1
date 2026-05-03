@@ -35,7 +35,8 @@
         </button>
 
         <div class="slider-track-wrap">
-          <div class="slider-track" [style.transform]="'translateX(-' + (currentSlideIndex * (100 / 3)) + '%)'">
+          <div class="slider-track"
+            [style.transform]="'translateX(-' + (currentSlideIndex * (100 / itemsToShow)) + '%)'">
             <div class="portfolio-card" *ngFor="let item of serviceData.portfolioItems">
               <div class="card-img-wrap">
                 <img [src]="item.image" [alt]="item.title">

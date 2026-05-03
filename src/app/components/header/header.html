@@ -13,11 +13,12 @@
       <ul>
         <li *ngFor="let link of navLinks" [class.has-dropdown]="link.children">
           <ng-container *ngIf="!link.external; else externalLink">
-            <a [routerLink]="link.path === '#' ? null : link.path" routerLinkActive="active" 
-               [routerLinkActiveOptions]="{exact: !!link.exact}"
-               (click)="link.children ? toggleDropdown(link.label, $event) : closeMenu()">
+            <a [routerLink]="link.path === '#' ? null : link.path" routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: !!link.exact}"
+              (click)="link.children ? toggleDropdown(link.label, $event) : closeMenu()">
               {{link.label}}
-              <i *ngIf="link.children" class="fas fa-chevron-down dropdown-icon" [class.rotate]="activeDropdown === link.label"></i>
+              <i *ngIf="link.children" class="fas fa-chevron-down dropdown-icon"
+                [class.rotate]="activeDropdown === link.label"></i>
             </a>
           </ng-container>
           <ng-template #externalLink>

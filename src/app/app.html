@@ -1,3 +1,13 @@
+<!-- Premium 3D Loader -->
+<div class="loader-wrapper" [class.hidden]="!isLoading()">
+  <div class="loader-3d">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="logo-small">MS</div>
+  </div>
+</div>
+
 <app-header *ngIf="showLayout"></app-header>
 <main>
   <router-outlet></router-outlet>

@@ -120,8 +120,9 @@
 
 .info-item {
   display: flex;
-  gap: 20px;
-  margin-bottom: 30px;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 35px;
 }
 
 .info-item:last-child {
@@ -129,21 +130,25 @@
 }
 
 .info-icon {
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
   background: var(--bg-soft-pink);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-gold);
-  font-size: 18px;
+  font-size: 22px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
 }
 
 .info-text h4 {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
+  color: #1a1a1a;
+  font-weight: 700;
 }
 
 .info-text p {

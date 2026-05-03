@@ -7,7 +7,7 @@
 
 <section class="gallery-grid section-padding">
   <div class="container">
-    
+
     <!-- Loading State -->
     <div *ngIf="isLoading" class="text-center py-5">
       <p class="gold-text">Fetching your cinematic moments...</p>
@@ -16,7 +16,11 @@
 
     <!-- Gallery Grid (Only show when not loading and has images) -->
     <div class="masonry" *ngIf="!isLoading && images.length > 0">
-      <div class="gallery-item" *ngFor="let img of images">
+      <div class="gallery-item" *ngFor="let img of images; let i = index" 
+           [style.--i]="i" 
+           [style.--tx]="img.tx" 
+           [style.--ty]="img.ty" 
+           [style.--tr]="img.tr">
         <div class="gallery-img-wrap">
           <img [src]="img.url" [alt]="img.category">
           <div class="gallery-overlay">

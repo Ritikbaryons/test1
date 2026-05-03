@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, HostListener } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
@@ -26,7 +26,19 @@ export class ServiceDetailComponent implements OnInit, OnDestroy {
   serviceId: string = '';
   serviceData: ServiceData | null = null;
   currentSlideIndex = 0;
+  itemsToShow = 3;
   isSubmitting = false;
+
+  @HostListener('window:resize')
+  onResize() {
+    this.updateItemsToShow();
+  }
+
+  private updateItemsToShow() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.itemsToShow = window.innerWidth <= 768 ? 1 : 3;
+    }
+  }
 
   formData = {
     name: '',
@@ -40,16 +52,18 @@ export class ServiceDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private apiService: ApiService
+    private apiService: ApiService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   ngOnInit(): void {
+    this.updateItemsToShow();
     this.route.paramMap.subscribe(params => {
       this.serviceId = params.get('id') || 'wedding';
       this.loadServiceData();
 
       // Scroll to top when changing route
-      if (typeof window !== 'undefined') {
+      if (isPlatformBrowser(this.platformId)) {
         window.scrollTo(0, 0);
       }
       this.startAutoSlide();
@@ -113,13 +127,13 @@ export class ServiceDetailComponent implements OnInit, OnDestroy {
       title: 'Wedding Photography',
       subtitle: 'Capturing the Magic of Your Special Day',
       description: 'Your wedding day is one of the most important milestones of your life. Our wedding photography service is dedicated to capturing the raw emotions, the stolen glances, and the grand celebrations that make your day unique. We blend cinematic storytelling with candid moments to deliver a timeless collection of memories.',
-      mainImage: '/assets/images/home1.png',
+      mainImage: '/assets/images/wedding1.svg',
       portfolioItems: [
-        { image: '/assets/images/home1.png', title: 'The Royal Union', location: 'Patna, Bihar', category: 'Wedding' },
-        { image: '/assets/images/wedding_couple_portrait_1777525329405.png', title: 'Sunset Vows', location: 'Gaya, Bihar', category: 'Wedding' },
-        { image: '/assets/images/wedding_hero_1777525311142.png', title: 'Eternal Love', location: 'Muzaffarpur, Bihar', category: 'Wedding' },
-        { image: '/assets/images/about_us_page_1777525057236.png', title: 'Traditional Elegance', location: 'Patna, Bihar', category: 'Wedding' },
-        { image: '/assets/images/home1.png', title: 'Classic Romance', location: 'Bihar Sharif', category: 'Wedding' }
+        { image: '/assets/images/wedding2.jpg', title: 'The Royal Union', location: 'Patna, Bihar', category: 'Wedding' },
+        { image: '/assets/images/wedding3.jpg', title: 'Sunset Vows', location: 'Gaya, Bihar', category: 'Wedding' },
+        { image: '/assets/images/wedding4.jpg', title: 'Eternal Love', location: 'Muzaffarpur, Bihar', category: 'Wedding' },
+        { image: '/assets/images/wedding5.jpg', title: 'Traditional Elegance', location: 'Patna, Bihar', category: 'Wedding' },
+        { image: '/assets/images/wedding6.jpg', title: 'Classic Romance', location: 'Bihar Sharif', category: 'Wedding' }
       ],
       whyChooseUs: [
         { title: 'Story-Driven Approach', text: 'We focus on the narrative of your love story.', icon: 'fas fa-book-open' },
@@ -143,8 +157,8 @@ export class ServiceDetailComponent implements OnInit, OnDestroy {
       mainImage: '/assets/images/wedding_couple_portrait_1777525329405.png',
       portfolioItems: [
         { image: '/assets/images/wedding_couple_portrait_1777525329405.png', title: 'Golden Hour Bliss', location: 'Ganga Ghat, Patna', category: 'Pre-Wedding' },
-        { image: '/assets/images/home1.png', title: 'Urban Love', location: 'Patna Marine Drive', category: 'Pre-Wedding' },
-        { image: '/assets/images/about_us_page_1777525057236.png', title: 'Nature\'s Embrace', location: 'Eco Park, Patna', category: 'Pre-Wedding' },
+        { image: '/assets/images/pre_wedding_small_2.png', title: 'Urban Love', location: 'Patna Marine Drive', category: 'Pre-Wedding' },
+        { image: '/assets/images/pre_wedding_small_1.png', title: 'Nature\'s Embrace', location: 'Eco Park, Patna', category: 'Pre-Wedding' },
         { image: '/assets/images/wedding_hero_1777525311142.png', title: 'Vintage Vibes', location: 'Patna Museum', category: 'Pre-Wedding' }
       ],
       whyChooseUs: [
@@ -169,7 +183,7 @@ export class ServiceDetailComponent implements OnInit, OnDestroy {
       mainImage: '/assets/images/wedding_hero_1777525311142.png',
       portfolioItems: [
         { image: '/assets/images/wedding_hero_1777525311142.png', title: 'Ring Ceremony', location: 'Patna', category: 'Engagement' },
-        { image: '/assets/images/home1.png', title: 'Soulmates', location: 'Gaya', category: 'Engagement' },
+        { image: '/assets/images/pre_wedding_small_1.png', title: 'Soulmates', location: 'Gaya', category: 'Engagement' },
         { image: '/assets/images/wedding_couple_portrait_1777525329405.png', title: 'The Promise', location: 'Ara', category: 'Engagement' }
       ],
       whyChooseUs: [
@@ -190,10 +204,11 @@ export class ServiceDetailComponent implements OnInit, OnDestroy {
       title: 'Maternity Photography',
       subtitle: 'Embrace the Miracle of Life',
       description: 'Pregnancy is a beautiful, fleeting journey. Our maternity photography sessions are designed to make you feel comfortable, beautiful, and empowered. We capture the glowing anticipation of motherhood in serene indoor or outdoor settings.',
-      mainImage: '/assets/images/about_us_page_1777525057236.png',
+      mainImage: '/assets/images/Maternity1.jpg',
       portfolioItems: [
-        { image: '/assets/images/about_us_page_1777525057236.png', title: 'A Mother\'s Glow', location: 'Patna', category: 'Maternity' },
-        { image: '/assets/images/home1.png', title: 'Waiting for You', location: 'Patna', category: 'Maternity' }
+        { image: '/assets/images/Maternity2.jpg', title: 'A Mother\'s Glow', location: 'Patna', category: 'Maternity' },
+        { image: '/assets/images/Maternity3.jpg', title: 'Waiting for You', location: 'Patna', category: 'Maternity' },
+        { image: '/assets/images/Maternity4.jpg', title: 'Waiting for You', location: 'Patna', category: 'Maternity' }
       ],
       whyChooseUs: [
         { title: 'Comfort First', text: 'Relaxed sessions tailored to your pace.', icon: 'fas fa-couch' },
@@ -213,10 +228,11 @@ export class ServiceDetailComponent implements OnInit, OnDestroy {
       title: 'Birthday Photography',
       subtitle: 'Joyful Moments, Colorful Memories',
       description: 'Whether it is a child’s first milestone or a grand 50th celebration, birthdays are meant to be remembered. We cover the decor, the excitement, the cake-cutting, and all the spontaneous fun, delivering vibrant and lively photographs.',
-      mainImage: '/assets/images/home1.png',
+      mainImage: '/assets/images/birthday_large.png',
       portfolioItems: [
-        { image: '/assets/images/home1.png', title: 'One Year of Joy', location: 'Patna', category: 'Birthday' },
-        { image: '/assets/images/about_us_page_1777525057236.png', title: 'Celebration Time', location: 'Patna', category: 'Birthday' }
+        { image: '/assets/images/birthday_small_1.png', title: 'One Year of Joy', location: 'Patna', category: 'Birthday' },
+        { image: '/assets/images/birthday_small_2.png', title: 'Celebration Time', location: 'Patna', category: 'Birthday' },
+        { image: '/assets/images/birthday_small_3.png', title: 'Grand Celebration', location: 'Patna', category: 'Birthday' }
       ],
       whyChooseUs: [
         { title: 'Vibrant Colors', text: 'Bright, cheerful editing styles to match the mood.', icon: 'fas fa-palette' },
@@ -236,10 +252,11 @@ export class ServiceDetailComponent implements OnInit, OnDestroy {
       title: 'Event Photography',
       subtitle: 'Professional Coverage for Every Occasion',
       description: 'From corporate galas to cultural festivals, our event photography provides comprehensive coverage of your occasion. We document key speakers, crowd interactions, and the overall atmosphere, providing high-quality images for your marketing or personal archives.',
-      mainImage: '/assets/images/wedding_hero_1777525311142.png',
+      mainImage: '/assets/images/event_large.png',
       portfolioItems: [
-        { image: '/assets/images/wedding_hero_1777525311142.png', title: 'Corporate Gala', location: 'Patna', category: 'Event' },
-        { image: '/assets/images/home1.png', title: 'Annual Meet', location: 'Patna', category: 'Event' }
+        { image: '/assets/images/event_small_1.png', title: 'Corporate Gala', location: 'Patna', category: 'Event' },
+        { image: '/assets/images/event_small_2.png', title: 'Annual Meet', location: 'Patna', category: 'Event' },
+        { image: '/assets/images/event_small_3.png', title: 'Cultural Festival', location: 'Patna', category: 'Event' }
       ],
       whyChooseUs: [
         { title: 'Comprehensive Coverage', text: 'We don’t miss a single crucial moment.', icon: 'fas fa-camera-retro' },

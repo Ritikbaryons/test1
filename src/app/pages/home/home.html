@@ -10,14 +10,11 @@
   <div class="mobile-hero-bg">
     <iframe
       src="https://www.youtube.com/embed/IdkxROhtX2U?autoplay=1&mute=1&loop=1&playlist=IdkxROhtX2U&controls=0&rel=0&playsinline=1"
-      title="Moments Studio Highlight"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
+      title="Moments Studio Highlight" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
     </iframe>
   </div>
   <div class="hero-overlay"></div>
-  <div class="container hero-content">
+  <div class="container hero-content reveal-on-scroll" style="--i: 0;">
     <h1 class="hero-title">{{heroData.title}}</h1>
     <p class="hero-subtitle">{{heroData.subtitle}}</p>
     <div class="hero-btns">
@@ -28,44 +25,45 @@
 
 <section class="quote-section">
   <div class="container">
-    <div class="quote-content">
-      <p class="quote-text">{{quoteData.text}}</p>
-      <p class="quote-author">— {{quoteData.author}}</p>
+    <div class="quote-content reveal-on-scroll">
+      <p class="quote-text">{{animatedQuote}}<span class="quote-cursor" *ngIf="!isQuoteFinished">|</span></p>
+      <p class="quote-author">{{animatedAuthor}}</p>
     </div>
   </div>
 </section>
 
 <section class="about-section section-padding">
   <div class="container grid-2 align-center">
-    <div class="about-text">
+    <div class="about-text reveal-on-scroll">
       <h2 class="about-title">The Best Wedding <br> Photographer In <br> Patna Bihar</h2>
       <p class="about-description">Hey there! Welcome to Moments Studio – where your love story gets painted with
         emotional brushstrokes! We're the best wedding photographers in Patna, Bihar, capturing the timeless charm of
         weddings. Step into our world for dramatic bridal shoots, fun Jaimaaland Galsedi, and romantic wedding moments.
         We'll turn your big day into a romantic novel with unique poses. Let's make ordinary moments extraordinary!</p>
-      <a routerLink="/about" class="btn-know-more">Know More</a>
+      <a routerLink="/about" class="btn-know-more">Know More About Our Cinematic Style</a>
     </div>
-    <div class="about-image">
-      <img src="assets/images/home1.png" alt="Wedding Portrait" class="rounded-img">
+    <div class="about-image reveal-on-scroll">
+      <img src="assets/images/home1.jpeg" alt="Best wedding photography in Patna by Moments Studio" class="rounded-img">
     </div>
   </div>
 </section>
 
 <section class="services-section section-padding">
   <div class="container">
-    <div class="section-header text-center">
-      <h2>Our Services</h2>
-      <p class="section-subtitle">Moments Studio provides professional wedding photography services in Patna, <br>
-        including candid, cinematic, and traditional coverage.</p>
+    <div class="section-header text-center reveal-on-scroll">
+      <h2>Professional Wedding Photography Services in Patna</h2>
+      <p class="section-subtitle">Moments Studio provides high-end wedding photography services in Patna, <br>
+        including candid, cinematic, and traditional coverage tailored to your story.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card" *ngFor="let s of services">
+      <div class="service-card reveal-on-scroll" *ngFor="let s of services; let i = index" [style.--i]="i" [routerLink]="s.path" style="cursor: pointer;">
         <div class="service-img">
-          <img [src]="s.img" [alt]="s.title">
+          <img [src]="s.img" [alt]="s.title + ' in Patna - Moments Studio'">
         </div>
         <div class="service-content">
           <h3>{{s.title}}</h3>
           <p>{{s.desc}}</p>
+          <span class="learn-more">Learn More <i class="fas fa-arrow-right"></i></span>
         </div>
       </div>
     </div>
@@ -77,11 +75,11 @@
     <div class="cta-wrapper">
       <ng-container *ngFor="let item of bookingCtaData; let i = index">
         <ng-container *ngIf="currentBookingIndex === i">
-          <div class="cta-content fade-in-up">
+          <div class="cta-content reveal-on-scroll">
             <h2 class="cta-heading">{{animatedTitle}}<span class="cta-cursor">|</span></h2>
             <p class="cta-subtext">{{item.subtext}}</p>
             <div class="cta-footer">
-              <a routerLink="/contact" class="btn-cta-outline">Get a Quote</a>
+              <a routerLink="/contact" class="btn-cta-outline">Check Wedding Photography Packages Patna</a>
               <div class="cta-social-links">
                 <a href="https://www.facebook.com/moments1studio" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/moments1studio" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -89,16 +87,16 @@
               </div>
             </div>
           </div>
-          <div class="cta-gallery fade-in-right">
+          <div class="cta-gallery reveal-on-scroll">
             <div class="cta-img-large">
-              <img [src]="item.images.large" [alt]="item.title">
+              <img [src]="item.images.large" [alt]="'Candid wedding photography in Patna - ' + item.title">
             </div>
             <div class="cta-img-small-group">
               <div class="cta-img-small">
-                <img [src]="item.images.small1" alt="Gallery 1">
+                <img [src]="item.images.small1" [alt]="'Best wedding photographer Patna portfolio'">
               </div>
               <div class="cta-img-small">
-                <img [src]="item.images.small2" alt="Gallery 2">
+                <img [src]="item.images.small2" [alt]="'Cinematic wedding films Patna'">
               </div>
             </div>
           </div>
@@ -110,26 +108,60 @@
 
 <section class="gallery-preview section-padding">
   <div class="container">
-    <div class="section-header text-center">
+    <div class="section-header text-center reveal-on-scroll">
       <h4 class="accent-text">GALLERY</h4>
-      <h2>Recent Portfolio Work</h2>
+      <h2>Recent Portfolio Work in Patna</h2>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item" *ngFor="let img of galleryPreview">
-        <img [src]="img" alt="Gallery Work">
+      <div class="gallery-item reveal-on-scroll" *ngFor="let img of galleryPreview; let i = index" [style.--i]="i"
+        (click)="openLightbox(img)">
+        <div class="gallery-img-container">
+          <img [src]="img.url" [alt]="'Candid wedding photography in Patna - ' + img.category">
+          <div class="view-overlay">
+            <span>VIEW RECENT WORK</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Lightbox Modal -->
+<div class="lightbox-overlay" *ngIf="selectedImage" (click)="closeLightbox()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeLightbox()">&times;</button>
+    <div class="lightbox-grid">
+      <div class="lightbox-image">
+        <img [src]="selectedImage.url" alt="Full Image">
+      </div>
+      <div class="lightbox-details">
+        <h3 class="gold-text">PHOTO DETAILS</h3>
+        <div class="detail-item">
+          <label>Title</label>
+          <p>{{selectedImage.title}}</p>
+        </div>
+        <div class="detail-item">
+          <label>Service</label>
+          <p>{{selectedImage.service}}</p>
+        </div>
+        <div class="detail-item">
+          <label>Location</label>
+          <p><i class="fas fa-map-marker-alt"></i> {{selectedImage.location}}</p>
+        </div>
+        <a routerLink="/contact" class="btn-cta-outline" (click)="closeLightbox()">Book Similar Shoot</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section class="reviews-section section-padding">
   <div class="container">
-    <div class="section-header text-center">
+    <div class="section-header text-center reveal-on-scroll">
       <h4 class="accent-text">TESTIMONIALS</h4>
       <h2>What Our Clients Say</h2>
     </div>
 
-    <div class="testimonial-carousel">
+    <div class="testimonial-carousel reveal-on-scroll">
       <div class="testimonial-card">
         <div class="testimonial-flex">
           <div class="testimonial-img">
@@ -156,13 +188,14 @@
 
 <section class="faq-section section-padding">
   <div class="container">
-    <div class="section-header text-center">
+    <div class="section-header text-center reveal-on-scroll">
       <h4 class="accent-text">FAQS</h4>
       <h2>Frequently Asked Questions</h2>
     </div>
 
     <div class="faq-accordion">
-      <div class="faq-item" *ngFor="let item of faqs; let i = index" [class.active]="item.open" (click)="toggleFaq(i)">
+      <div class="faq-item reveal-on-scroll" *ngFor="let item of faqs; let i = index" [class.active]="item.open"
+        (click)="toggleFaq(i)" [style.--i]="i">
         <div class="faq-header">
           <h3>{{item.question}}</h3>
           <span class="faq-icon"><i class="fas" [ngClass]="item.open ? 'fa-minus' : 'fa-plus'"></i></span>
@@ -173,4 +206,4 @@
       </div>
     </div>
   </div>
-</section>
+</section>
